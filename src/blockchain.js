@@ -118,7 +118,7 @@ class Blockchain {
             const currentTime = parseInt(new Date().getTime().toString().slice(0, -3));
             const elapsedTime = (currentTime - messageTime);
             try {
-                if(elapsedTime < 30000){
+                if(elapsedTime < 300){
                     if(!bitcoinMessage.verify(message, address, signature)){
                         reject('invalid signature')
                     }
