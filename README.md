@@ -25,19 +25,19 @@ This blockchain is builded to astronomic fans to register stars, and track the o
 ---
 
 1 - Get genesys block
-![Alt text](screens-tests\1-get-genesys-block.png?raw=true "Title")
+![Alt text](.\screens-tests\1-get-genesys-block.png?raw=true "Title")
 
 2 - Request validation
-![Alt text](screens-tests\2-request-validation.png?raw=true "Title")
+![Alt text](.\screens-tests\2-request-validation.png?raw=true "Title")
 
 3 - Assign the message
-![Alt text](screens-tests\3-assign-message.png?raw=true "Title")
+![Alt text](.\screens-tests\3-assign-message.png?raw=true "Title")
 
 4 - Get submit star
-![Alt text](screens-tests\4-submit-star.png?raw=true "Title")
+![Alt text](.\screens-tests\4-submit-star.png?raw=true "Title")
 
 5 - Get stars by address
-![Alt text](screens-tests\5-get-stars-by-address.png?raw=true "Title")
+![Alt text](.\screens-tests\5-get-stars-by-address.png?raw=true "Title")
 
 6 - Validate chain
-![Alt text](screens-tests\6-validate-chain.png?raw=true "Title")
+![Alt text](.\screens-tests\6-validate-chain.png?raw=true "Title")
