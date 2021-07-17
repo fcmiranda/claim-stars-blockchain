@@ -1,0 +1,20 @@
+{
+  "name": "claim-star-blockchain",
+  "version": "1.0.0",
+  "description": "The blockchain where people can claim the stars and prove they own them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felipe Miranda - fecmbr@gmail.com - https://github.com/fcmiranda",
+  "license": "ISC",
+  "dependencies": {
+    "bitcoinjs-lib": "^4.0.3",
+    "bitcoinjs-message": "^2.0.0",
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.4",
+    "hex2ascii": "0.0.3",
+    "morgan": "^1.9.1"
+  }
+}
