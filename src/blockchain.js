@@ -91,7 +91,7 @@ class Blockchain {
      */
     requestMessageOwnershipVerification(address) {
         return new Promise((resolve) => {
-            resolve(`${address}:${new Date().getTime().toString().slice(0,-3)}:starRegistry`)
+            resolve(`${address}:${new Date().getTime().toString().slice(0,-3)}:starRegistry`);
         });
     }
 
@@ -122,13 +122,13 @@ class Blockchain {
             try {
                 if(elapsedTime < fiveMinutes){
                     if(!bitcoinMessage.verify(message, address, signature)){
-                        reject('invalid signature')
+                        reject('invalid signature');
                     }
                     const block = new BlockClass.Block({data: {address, message, signature, star}});
                     
                     resolve(self._addBlock(block));
                 }else {
-                    reject('Time diff is greater than 5 minutes.')
+                    reject('Time diff is greater than 5 minutes.');
                 }
             } catch(e) {
                 reject(e.message)
@@ -145,7 +145,7 @@ class Blockchain {
     getBlockByHash(hash) {
         let self = this;
         return new Promise((resolve, reject) => {
-            const block = self.chain.find(block => block.hash === hash)
+            const block = self.chain.find(block => block.hash === hash);
             if(block)
                 resolve(block)
             else
@@ -182,7 +182,7 @@ class Blockchain {
             self.chain.filter(block => {
                 const data = block.getBData();
                 if(data && (data.address === address)){
-                    stars.push(data.star)
+                    stars.push(data.star);
                 }
             })
             
@@ -203,7 +203,7 @@ class Blockchain {
         let self = this;
         let errorLog = [];  
         
-        const returnAPromise = (previousBlock, currentBlock) => {
+        const returnsAPromise = (previousBlock, currentBlock) => {
             return new Promise(async (resolve, reject) => {
                 const isValid = await currentBlock.validate();
                 if(!isValid)
@@ -219,11 +219,11 @@ class Blockchain {
 
             await self.chain.reduce(async (previousPromise, currentBlock) => {                             
                 const previousBlock = await previousPromise
-                return returnAPromise(previousBlock, currentBlock);
+                return returnsAPromise(previousBlock, currentBlock);
                 
             }, Promise.resolve());
 
-            resolve(errorLog)
+            resolve(errorLog);
         });
     }
 
