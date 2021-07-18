@@ -62,6 +62,7 @@ class Blockchain {
      * that this method is a private method. 
      */
     _addBlock(block) {
+        validateChain();
         let self = this;
         return new Promise(async (resolve, reject) => {
             
@@ -117,8 +118,9 @@ class Blockchain {
             const messageTime = parseInt(message.split(':')[1]);
             const currentTime = parseInt(new Date().getTime().toString().slice(0, -3));
             const elapsedTime = (currentTime - messageTime);
+            const fiveMinutes = 300 //seconds
             try {
-                if(elapsedTime < 300){
+                if(elapsedTime < fiveMinutes){
                     if(!bitcoinMessage.verify(message, address, signature)){
                         reject('invalid signature')
                     }
@@ -201,7 +203,7 @@ class Blockchain {
         let self = this;
         let errorLog = [];  
         
-        const retornaPromise = (previousBlock, currentBlock) => {
+        const returnAPromise = (previousBlock, currentBlock) => {
             return new Promise(async (resolve, reject) => {
                 const isValid = await currentBlock.validate();
                 if(!isValid)
@@ -215,9 +217,9 @@ class Blockchain {
 
         return new Promise(async (resolve, reject) => {   
 
-            await self.chain.reduce(async (previousPromise, currentBlock, index) => {                             
+            await self.chain.reduce(async (previousPromise, currentBlock) => {                             
                 const previousBlock = await previousPromise
-                return retornaPromise(previousBlock, currentBlock);
+                return returnAPromise(previousBlock, currentBlock);
                 
             }, Promise.resolve());
 
