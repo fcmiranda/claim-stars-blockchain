@@ -61,12 +61,15 @@ class Blockchain {
      * Note: the symbol `_` in the method name indicates in the javascript convention 
      * that this method is a private method. 
      */
-    _addBlock(block) {
-        validateChain();
+    _addBlock(block) {                
         let self = this;
         return new Promise(async (resolve, reject) => {
+
+            const errors = await self.validateChain();
+            if(errors && errors.length)
+                reject('The blockchain is tampered');
             
-            if(self.chain.length > 0){
+            if(self.chain.length > 0){                
                 const previousBlock = self.chain[self.height];
                 block.previousBlockHash = previousBlock.hash;
             }
@@ -215,7 +218,12 @@ class Blockchain {
             });
         };
 
-        return new Promise(async (resolve, reject) => {   
+        return new Promise(async (resolve, reject) => {
+            
+            // if(!self.chain.length){
+            //     reject();
+            //     return; 
+            // }
 
             await self.chain.reduce(async (previousPromise, currentBlock) => {                             
                 const previousBlock = await previousPromise
