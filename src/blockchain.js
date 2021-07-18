@@ -220,11 +220,6 @@ class Blockchain {
 
         return new Promise(async (resolve, reject) => {
             
-            // if(!self.chain.length){
-            //     reject();
-            //     return; 
-            // }
-
             await self.chain.reduce(async (previousPromise, currentBlock) => {                             
                 const previousBlock = await previousPromise
                 return returnsAPromise(previousBlock, currentBlock);
